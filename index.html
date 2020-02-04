@@ -1,15 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello World</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/earlyaccess/cwtexyen.css' />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+    <script sync src='https://unpkg.com/element-ui/lib/index.js'></script>
+    <script sync src='https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js'></script>
+    <script sync src="./js/index.js" type="module"></script>
+    <title>Page</title>
+    <style>
+        body {
+            font-family: 'cwTeXYen', sans-serif;
+        }
+
+        .el-header {
+            background-color: #B3C0D1;
+            color: #333;
+            text-align: center;
+        }
+
+        .el-footer {
+            background-color: #B3C0D1;
+            color: #333;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .el-main {
+            background-color: #E9EEF3;
+            color: #333;
+            text-align: center;
+        }
+
+        .a-none,
+        .el-col a {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
-    Test Pages
+    <div id="app">
+        <transition appear name="el-fade-in-linear">
+            <el-container>
+                <el-header>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div></div>
+                        <h1>Reference</h1>
+                        <a class="a-none" target="_blank" href="https://github.com/a2261389/reference">GitHub</a>
+                    </div>
+                </el-header>
+
+                <el-container style="min-height:580px">
+                    <!-- aside -->
+                    <el-aside style="max-width:30%; max-height:580px">
+                        <el-col>
+                            <h3>分類</h3>
+                            <el-menu>
+                                <el-menu-item @click="selectToAllTab">
+                                    <span slot="title">全部</span>
+                                </el-menu-item>
+                                <side-bar :items="references" v-on:side-bar-select-id="getSideBarSelectId"></side-bar>
+                            </el-menu>
+                        </el-col>
+                    </el-aside>
+                    <!-- end side -->
+                    <!-- main -->
+                    <el-main>
+                        <el-row :gutter="5">
+                            <transition-group name="el-zoom-in-top" mode="out-in">
+                                <el-col :xs="22" :sm="12" :md="9" :lg="6" :xl="3" style="margin-bottom:0.3em"
+                                    v-for="(item, index) in filterItems" :key="item.title">
+                                    <a :href="item.link" target="_blank">
+                                        <el-badge :value="item.badge" v-if="item.badge">
+                                            <el-card shadow="hover">{{ item.title }}</el-card>
+                                        </el-badge>
+                                        <el-card shadow="hover" v-else>{{ item.title }}</el-card>
+                                    </a>
+                                </el-col>
+                            </transition-group>
+                        </el-row>
+                    </el-main>
+                    <!-- end main -->
+                </el-container>
+            </el-container>
+        </transition>
+    </div>
 </body>
 
 </html>
