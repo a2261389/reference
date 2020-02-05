@@ -8,6 +8,7 @@ const vm = new Vue({
             references: data,
             select: '',
             filterItems: [],
+            searchText: '',
         }
     },
     mounted() {
@@ -22,11 +23,11 @@ const vm = new Vue({
             this.filterItems = this.getAllData(this.references, [], id).sort(this.sortElement)
         },
         // No level
-        getAllData(data, temp, searchItemId) {
+        getAllData(data, temp, itemValue, itemType = 'id') {
             data.forEach((item) => {
                 // 過濾沒有data的父標籤
                 if (item.data !== undefined) {
-                    if (!searchItemId || (searchItemId && searchItemId === item.id)) {
+                    if (!itemValue || (itemValue && itemValue === item[itemType])) {
                         item.data.forEach((data) => {
                             temp.push({
                                 title: data.title,
@@ -37,7 +38,26 @@ const vm = new Vue({
                     }
                 }
                 if (item.children && item.children.length) {
-                    return this.getAllData(item.children, temp, searchItemId)
+                    return this.getAllData(item.children, temp, itemValue, itemType)
+                }
+            })
+            return temp
+        },
+        getSearchData(data, temp, itemValue, itemType = 'title') {
+            data.forEach((item) => {
+                if (item.data !== undefined) {
+                    item.data.forEach((data) => {
+                        if (itemValue === data[itemType]) {
+                            temp.push({
+                                title: data.title,
+                                link: data.link,
+                                badge: data.badge || null
+                            })
+                        }
+                    })
+                }
+                if (item.children && item.children.length) {
+                    return this.getSearchData(item.children, temp, itemValue, itemType)
                 }
             })
             return temp
@@ -53,6 +73,23 @@ const vm = new Vue({
             }
 
             return 0
+        },
+        querySearch(queryString, cb) {
+            let filterItems = this.getAllData(this.references, []).sort(this.sortElement)
+            let results = queryString ? filterItems.filter(this.createFilter(queryString)) : filterItems
+            cb(results)
+        },
+        createFilter(queryString) {
+            return filterItems => filterItems.title.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+        },
+
+        handleSelect(item) {
+            this.searchText = item.title
+            this.filterItems = this.getSearchData(this.references, [], item.title, 'title').sort(this.sortElement)
+        },
+        handleClean(e) {
+            this.searchText = ''
+            this.selectToAllTab()
         }
     }
 })

@@ -42,8 +42,9 @@
             color: #000;
             text-decoration: none;
         }
+
         .el-aside {
-            max-width:30%;
+            max-width: 30%;
             max-height: 580px;
         }
 
@@ -69,6 +70,16 @@
                     <!-- aside -->
                     <el-aside>
                         <el-col>
+                            <el-autocomplete popper-class="my-autocomplete" v-model="searchText"
+                                :fetch-suggestions="querySearch" placeholder="搜尋" @select="handleSelect"
+                                style="margin-top:30px;">
+                                <i class="el-icon-close el-input__icon" slot="suffix" @click="handleClean">
+                                </i>
+                                <template slot-scope="{ item }">
+                                    <div class="name">{{ item.title }}</div>
+                                    <span class="addr">{{ item.link }}</span>
+                                </template>
+                            </el-autocomplete>
                             <h3>分類</h3>
                             <el-menu>
                                 <el-menu-item @click="selectToAllTab">
