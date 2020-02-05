@@ -14,7 +14,7 @@ const phpData = [
                 ],
                 data: [
                     {
-                        title: 'PHP官網',
+                        title: 'PHP',
                         link: 'https://www.php.net/',
                     }
                 ],
@@ -28,7 +28,7 @@ const phpData = [
                 ],
                 data: [
                     {
-                        title: 'Composer官網',
+                        title: 'Composer',
                         link: 'https://getcomposer.org/',
                     },
                 ],
@@ -42,7 +42,7 @@ const phpData = [
                 ],
                 data: [
                     {
-                        title: 'Laravel官網',
+                        title: 'Laravel',
                         link: 'https://laravel.com/docs/',
                     },
                 ],
