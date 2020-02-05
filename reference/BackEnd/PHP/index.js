@@ -2,20 +2,15 @@ const phpData = [
     {
         id: uuid.v4(),
         name: 'PHP',
-        tags: [
-            'PHP',
-        ],
         children: [
             {
                 id: uuid.v4(),
                 name: 'PHP',
-                tags: [
-                    'SQL',
-                ],
                 data: [
                     {
                         title: 'PHP',
                         link: 'https://www.php.net/',
+                        tags: ['PHP'],
                     }
                 ],
                 children: [],
@@ -23,13 +18,11 @@ const phpData = [
             {
                 id: uuid.v4(),
                 name: 'Composer',
-                tags: [
-                    'PHP',
-                ],
                 data: [
                     {
                         title: 'Composer',
                         link: 'https://getcomposer.org/',
+                        tags: ['PHP', 'Dependency Manager'],
                     },
                 ],
                 children: [],
@@ -37,13 +30,11 @@ const phpData = [
             {
                 id: uuid.v4(),
                 name: 'Laravel',
-                tags: [
-                    'PHP',
-                ],
                 data: [
                     {
                         title: 'Laravel',
                         link: 'https://laravel.com/docs/',
+                        tags: ['PHP', 'Framework'],
                     },
                 ],
                 children: [],

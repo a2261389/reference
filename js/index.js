@@ -32,7 +32,8 @@ const vm = new Vue({
                             temp.push({
                                 title: data.title,
                                 link: data.link,
-                                badge: data.badge || null
+                                badge: data.badge || null,
+                                tags: data.tags,
                             })
                         })
                     }
@@ -51,7 +52,8 @@ const vm = new Vue({
                             temp.push({
                                 title: data.title,
                                 link: data.link,
-                                badge: data.badge || null
+                                badge: data.badge || null,
+                                tags: data.tags,
                             })
                         }
                     })
@@ -80,7 +82,7 @@ const vm = new Vue({
             cb(results)
         },
         createFilter(queryString) {
-            return filterItems => filterItems.title.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+            return filterItems => filterItems.title.toLowerCase().includes(queryString.toLowerCase())
         },
 
         handleSelect(item) {

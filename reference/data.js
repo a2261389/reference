@@ -12,13 +12,11 @@ const data = [
     {
         id: uuid.v4(),
         name: '前端',
-        tags: ['FrontEnd'],
         children: frontEnd
     },
     {
         id: uuid.v4(),
         name: '後端',
-        tags: ['BackEnd'],
         children: backEnd
     },
 ]
