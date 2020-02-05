@@ -11,15 +11,15 @@ const vm = new Vue({
         }
     },
     mounted() {
-        this.filterItems = this.getAllData(this.references, [])
+        this.filterItems = this.getAllData(this.references, []).sort(this.sortElement)
     },
     methods: {
         selectToAllTab() {
             this.select = ''
-            this.filterItems = this.getAllData(this.references, [])
+            this.filterItems = this.getAllData(this.references, []).sort(this.sortElement)
         },
         getSideBarSelectId(id) {
-            this.filterItems = this.getAllData(this.references, [], id)
+            this.filterItems = this.getAllData(this.references, [], id).sort(this.sortElement)
         },
         // No level
         getAllData(data, temp, searchItemId) {
@@ -41,6 +41,18 @@ const vm = new Vue({
                 }
             })
             return temp
+        },
+        sortElement(a, b) {
+            let elementA = a['title'].toString().toUpperCase()
+            let elementB = b['title'].toString().toUpperCase()
+            if (elementA > elementB) {
+                return 1
+            }
+            if (elementA < elementB) {
+                return -1
+            }
+
+            return 0
         }
     }
 })
