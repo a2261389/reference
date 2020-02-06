@@ -41,11 +41,16 @@
         .el-col a {
             color: #000;
             text-decoration: none;
+            transition: 0.3s;
         }
 
         .el-aside {
             max-width: 30%;
             max-height: 580px;
+        }
+
+        .a-hover-blue:hover {
+            color: #fa4252;
         }
 
         [v-cloak] {
@@ -96,28 +101,36 @@
                             <transition-group name="el-zoom-in-top" mode="out-in">
                                 <el-col :xs="22" :sm="12" :md="9" :lg="6" :xl="3" style="margin-bottom:0.3em"
                                     v-for="(item, index) in filterItems" :key="item.title">
-                                    <a :href="item.link" target="_blank">
-                                        <el-badge :value="item.badge" v-if="item.badge">
-                                            <el-card shadow="hover">
+                                    <el-badge :value="item.badge" v-if="item.badge">
+                                        <el-card shadow="hover">
+                                            <a :href="item.link" target="_blank" class="a-hover-blue">
                                                 {{ item.title }}
-                                                <div>
-                                                    <el-tag v-for="(tag, index) in item.tags" :key="index" size="mini"
-                                                        effect="dark" style="margin:5px 2px 0 2px;">
-                                                        {{ tag }}
-                                                    </el-tag>
-                                                </div>
-                                            </el-card>
-                                        </el-badge>
-                                        <el-card shadow="hover" v-else>
-                                            {{ item.title }}
+                                            </a>
                                             <div>
                                                 <el-tag v-for="(tag, index) in item.tags" :key="index" size="mini"
-                                                    effect="dark" style="margin:5px 2px 0 2px;">
-                                                    {{ tag }}
+                                                    effect="dark" style="margin:20px 2px 0 2px;"
+                                                    @click="handleSelectTag(tag)">
+                                                    <a href="javascript:;" style="color:white">
+                                                        {{ tag }}
+                                                    </a>
                                                 </el-tag>
                                             </div>
                                         </el-card>
-                                    </a>
+                                    </el-badge>
+                                    <el-card shadow="hover" v-else>
+                                        <a :href="item.link" target="_blank" class="a-hover-blue">
+                                            {{ item.title }}
+                                        </a>
+                                        <div>
+                                            <el-tag v-for="(tag, index) in item.tags" :key="index" size="mini"
+                                                effect="dark" style="margin:20px 2px 0 2px;"
+                                                @click="handleSelectTag(tag)">
+                                                <a href="javascript:;" style="color:white">
+                                                    {{ tag }}
+                                                </a>
+                                            </el-tag>
+                                        </div>
+                                    </el-card>
                                 </el-col>
                             </transition-group>
                         </el-row>

@@ -48,13 +48,12 @@ const vm = new Vue({
             data.forEach((item) => {
                 if (item.data !== undefined) {
                     item.data.forEach((data) => {
-                        if (itemValue === data[itemType]) {
-                            temp.push({
-                                title: data.title,
-                                link: data.link,
-                                badge: data.badge || null,
-                                tags: data.tags,
-                            })
+                        if (Array.isArray(data[itemType])) {
+                            if (data[itemType].indexOf(itemValue) !== -1) {
+                                temp.push({ ...data })
+                            }
+                        } else if (itemValue === data[itemType]) {
+                            temp.push({ ...data })
                         }
                     })
                 }
@@ -92,6 +91,9 @@ const vm = new Vue({
         handleClean(e) {
             this.searchText = ''
             this.selectToAllTab()
+        },
+        handleSelectTag(tag) {
+            this.filterItems = this.getSearchData(this.references, [], tag, 'tags').sort(this.sortElement)
         }
     }
 })
