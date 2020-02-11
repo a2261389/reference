@@ -1,7 +1,7 @@
 import { data } from '../reference/data.js'
 import './components/sidebar/index.js'
 
-const vm = new Vue({
+new Vue({
     el: '#app',
     data: () => {
         return {
@@ -29,12 +29,7 @@ const vm = new Vue({
                 if (item.data !== undefined) {
                     if (!itemValue || (itemValue && itemValue === item[itemType])) {
                         item.data.forEach((data) => {
-                            temp.push({
-                                title: data.title,
-                                link: data.link,
-                                badge: data.badge || null,
-                                tags: data.tags,
-                            })
+                            temp.push({ ...data })
                         })
                     }
                 }
