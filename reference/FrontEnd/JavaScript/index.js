@@ -12,6 +12,48 @@ const jsData = [
     },
     {
         id: uuid.v4(),
+        name: 'TypeScript',
+        data: [
+            {
+                title: 'TypeScript Tutorial (簡中)',
+                link: 'https://jkchao.github.io/typescript-book-chinese/',
+                tags: ['JavaScript', 'TypeScript'],
+            },
+            {
+                title: 'React TypeScript Cheat Sheet',
+                link: 'https://github.com/typescript-cheatsheets/react-typescript-cheatsheet',
+                tags: ['JavaScript', 'ReactJS', 'TypeScript'],
+            },
+        ],
+    },
+    {
+        id: uuid.v4(),
+        name: '打包、套件管理',
+        data: [
+            {
+                title: 'Polyfill',
+                link: 'https://polyfill.io/v3/url-builder/',
+                tags: ['JavaScript', 'polyfill'],
+            },
+            {
+                title: 'coreJS',
+                link: 'https://github.com/zloirock/core-js',
+                tags: ['JavaScript', 'coreJS'],
+            },
+            {
+                title: 'Webpack(簡中)',
+                link: 'https://www.webpackjs.com/concepts/',
+                tags: ['JavaScript', 'Webpack'],
+            },
+            {
+                title: 'NPM/Yarn Cheat Sheet',
+                link: 'https://github.com/areai51/yarn-cheatsheet',
+                tags: ['JavaScript', 'NPM', 'Yarn'],
+            },
+        ],
+    },
+    {
+        id: uuid.v4(),
         name: 'VueJS',
         children: [
             {
