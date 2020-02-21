@@ -5,13 +5,17 @@ const cssData = [
         children: [
             {
                 id: uuid.v4(),
-                name: 'SASS',
+                name: 'SASS/SCSS',
                 data: [
                     {
-                        title: 'SASS',
+                        title: 'SCSS',
                         link: 'https://sass-lang.com/',
-                        tags: ['CSS', 'SASS', 'SCSS'],
-                        badge: 'Hot',
+                        tags: ['CSS', 'SCSS'],
+                    },
+                    {
+                        title: 'SASS Cheat Sheet',
+                        link: 'https://devhints.io/sass',
+                        tags: ['CSS', 'SCSS', 'SASS'],
                     },
                 ],
                 children: [],
