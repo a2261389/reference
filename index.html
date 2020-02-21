@@ -101,7 +101,7 @@
                             <transition-group name="el-zoom-in-top" mode="out-in">
                                 <el-col :xs="22" :sm="12" :md="9" :lg="6" :xl="3" style="margin-bottom:0.3em"
                                     v-for="(item, index) in filterItems" :key="item.title">
-                                    <el-badge :value="item.badge" v-if="item.badge">
+                                    <el-badge :value="item.badge" v-if="item.badge" style="min-width:90%">
                                         <el-card shadow="hover">
                                             <a :href="item.link" target="_blank" class="a-hover-blue">
                                                 {{ item.title }}
