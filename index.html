@@ -67,7 +67,7 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <div></div>
                         <h1>Reference</h1>
-                        <a class="a-none" target="_blank" href="https://github.com/a2261389/reference">GitHub</a>
+                        <a class="a-none" target="_blank" rel="noopener noreferrer" href="https://github.com/a2261389/reference">GitHub</a>
                     </div>
                 </el-header>
 
@@ -103,14 +103,14 @@
                                     v-for="(item, index) in filterItems" :key="item.title">
                                     <el-badge :value="item.badge" v-if="item.badge" style="min-width:90%">
                                         <el-card shadow="hover">
-                                            <a :href="item.link" target="_blank" class="a-hover-blue">
+                                            <a :href="item.link" target="_blank" rel="noopener noreferrer" class="a-hover-blue">
                                                 {{ item.title }}
                                             </a>
                                             <div>
                                                 <el-tag v-for="(tag, index) in item.tags" :key="index" size="mini"
                                                     effect="dark" style="margin:20px 2px 0 2px;"
                                                     @click="handleSelectTag(tag)">
-                                                    <a href="javascript:;" style="color:white">
+                                                    <a href="javascript:;" rel="noopener noreferrer" style="color:white">
                                                         {{ tag }}
                                                     </a>
                                                 </el-tag>
@@ -118,14 +118,14 @@
                                         </el-card>
                                     </el-badge>
                                     <el-card shadow="hover" v-else>
-                                        <a :href="item.link" target="_blank" class="a-hover-blue">
+                                        <a :href="item.link" target="_blank" rel="noopener noreferrer" class="a-hover-blue">
                                             {{ item.title }}
                                         </a>
                                         <div>
                                             <el-tag v-for="(tag, index) in item.tags" :key="index" size="mini"
                                                 effect="dark" style="margin:20px 2px 0 2px;"
                                                 @click="handleSelectTag(tag)">
-                                                <a href="javascript:;" style="color:white">
+                                                <a href="javascript:;" rel="noopener noreferrer" style="color:white">
                                                     {{ tag }}
                                                 </a>
                                             </el-tag>
